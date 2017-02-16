@@ -11,8 +11,8 @@ class procurement_order(models.Model):
     lot_id = fields.Many2one('stock.production.lot', 'Lot')
 
     @api.model
-    def _run_move_create(self, procurement):
+    def _get_stock_move_values(self):
         res = super(
-            procurement_order, self)._run_move_create(procurement)
-        res['restrict_lot_id'] = procurement.lot_id.id
+            procurement_order, self)._get_stock_move_values()
+        res['restrict_lot_id'] = self.lot_id.id
         return res
