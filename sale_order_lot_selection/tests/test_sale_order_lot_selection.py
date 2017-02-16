@@ -1,25 +1,9 @@
 # -*- coding: utf-8 -*-
-#########################################################################
-#                                                                       #
-# Copyright (C) 2015  Agile Business Group                              #
-#                                                                       #
-# This program is free software: you can redistribute it and/or modify  #
-# it under the terms of the GNU Affero General Public License as        #
-# published by the Free Software Foundation, either version 3 of the    #
-# License, or (at your option) any later version.                       #
-#                                                                       #
-# This program is distributed in the hope that it will be useful,       #
-# but WITHOUT ANY WARRANTY; without even the implied warranty of        #
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #
-# GNU Affero General Public Licensefor more details.                    #
-#                                                                       #
-# You should have received a copy of the                                #
-# GNU Affero General Public License                                     #
-# along with this program.  If not, see <http://www.gnu.org/licenses/>. #
-#                                                                       #
-#########################################################################
+# © 2015 Agile Business Group
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 import openerp.tests.common as test_common
-from openerp.exceptions import Warning
+from odoo.exceptions import Warning
 
 
 class TestSaleOrderLotSelection(test_common.SingleTransactionCase):
@@ -51,7 +35,7 @@ class TestSaleOrderLotSelection(test_common.SingleTransactionCase):
         return product.with_context({
             'lot_id': lot.id,
             'location': location.id,
-            })._product_available()
+        })._product_available()
 
     def test_sale_order_lot_selection(self):
         # make products enter
@@ -98,27 +82,27 @@ class TestSaleOrderLotSelection(test_common.SingleTransactionCase):
                         'lot_name': '0000010',
                         'qty': ops.product_qty,
                         'qty_todo': ops.product_qty
-                        })],
+                    })],
                     'qty_done': ops.product_qty
-                    })
+                })
             if ops.product_id == self.product_46:
                 ops.write({
                     'pack_lot_ids': [(0, 0, {
                         'lot_name': '0000011',
                         'qty': ops.product_qty,
                         'qty_todo': ops.product_qty
-                        })],
+                    })],
                     'qty_done': ops.product_qty
-                    })
+                })
             if ops.product_id == self.product_12:
                 ops.write({
                     'pack_lot_ids': [(0, 0, {
                         'lot_name': '0000012',
                         'qty': ops.product_qty,
                         'qty_todo': ops.product_qty
-                        })],
+                    })],
                     'qty_done': ops.product_qty
-                    })
+                })
         picking_in.do_new_transfer()
         lot_obj = self.env['stock.production.lot']
         self.lot10 = lot_obj.search([('name', '=', '0000010'),
