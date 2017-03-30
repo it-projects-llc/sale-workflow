@@ -14,12 +14,14 @@ This project aim to deal with modules related to manage sale and their related w
  - ...
 
 [//]: # (addons)
+
 Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
 [sale_product_set](sale_product_set/) | 10.0.1.0.0 | Sale product set
 [sale_product_set_layout](sale_product_set_layout/) | 10.0.1.0.0 | Sale product set layout
+
 
 Unported addons
 ---------------
